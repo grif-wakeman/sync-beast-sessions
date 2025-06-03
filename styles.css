@@ -3,6 +3,7 @@
     font-weight: bold;
     src: url("./Assets/NeueMontreal-Bold.woff") format("woff");
 }
+
 @font-face {
     font-family: NeueMontreal;
     font-weight: normal;
@@ -24,7 +25,39 @@ body {
     color: var(--black);
 }
 
-h1, h2, h3, .bold {
+.text-wrapper {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    overflow: hidden;
+    background-color: #FF5FA2;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+}
+
+.loop-text {
+    white-space: nowrap;
+    padding: 0 7.7rem;
+    animation: move-rtl 10000ms linear infinite;
+    margin: 0;
+    font-size: 24px;
+}
+
+@keyframes move-rtl {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+h1,
+h2,
+h3,
+.bold {
     font-family: "NeueMontreal-bold", sans-serif;
     margin-bottom: 10px;
 }
@@ -40,7 +73,8 @@ h3 {
 main {
     max-width: 712px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 0 20px;
+    
 }
 
 .logo-container {
@@ -52,13 +86,14 @@ img {
     width: 100%;
     height: auto;
     margin-bottom: 40px;
+    border-radius: 4px;
 }
 
 .content-box {
     border: 1px solid #37352f3a;
     border-radius: 4px;
     padding: 12px 20px 12px 20px;
-    
+
 }
 
 .content-box p:last-of-type {
