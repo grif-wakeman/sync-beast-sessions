@@ -1,17 +1,31 @@
 @font-face {
-    font-family: NeueMontreal-bold;
-    font-weight: bold;
-    src: url("./Assets/NeueMontreal-Bold.woff") format("woff");
+    font-family: "Switzer";
+    src: url(./Assets/Switzer/Switzer-Regular.otf);
 }
 
 @font-face {
-    font-family: NeueMontreal;
-    font-weight: normal;
-    src: url("./Assets/NeueMontreal-Regular.woff") format("woff");
+    font-family: "Switzer-italic";
+    src: url(./Assets/Switzer/Switzer-Italic.otf);
 }
 
-:root {
-    --black: #32302C;
+@font-face {
+    font-family: "Switzer-semibold";
+    src: url(./Assets/Switzer/Switzer-Semibold.otf);
+}
+
+@font-face {
+    font-family: "Switzer-semibold-italic";
+    src: url(./Assets/Switzer/Switzer-SemiboldItalic.otf);
+}
+
+@font-face {
+    font-family: "Switzer-black";
+    src: url(./Assets/Switzer/Switzer-Black.otf);
+}
+
+@font-face {
+    font-family: "Switzer-black-italic";
+    src: url(./Assets/Switzer/Switzer-BlackItalic.otf);
 }
 
 * {
@@ -20,103 +34,161 @@
     box-sizing: border-box;
 }
 
+
+html,
 body {
-    font-family: "NeueMontreal", sans-serif;
-    color: var(--black);
+    height: 100%;
+    font-family: "Switzer", sans-serif;
 }
 
-.text-wrapper {
+.main-container {
+    width: clamp(375px, 80vw, 720px);
+    margin: 0 auto;
+    padding: 0 40px;
     display: flex;
-    justify-content: center;
-    align-content: center;
-    overflow: hidden;
-    background-color: #FF5FA2;
-    padding: 10px;
-    position: fixed;
-    top: 0;
+    flex-direction: column;
+    height: 100%;
 }
 
-.loop-text {
-    white-space: nowrap;
-    padding: 0 7.7rem;
-    animation: move-rtl 10000ms linear infinite;
-    margin: 0;
-    font-size: 24px;
+
+/* Prevent child content from growing too large */
+.main-container>* {
+    flex-shrink: 0;
 }
 
-@keyframes move-rtl {
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(-100%);
-    }
+.callout {
+    color: #929293;
+    letter-spacing: -.7px;
 }
 
-h1,
-h2,
-h3,
-.bold {
-    font-family: "NeueMontreal-bold", sans-serif;
-    margin-bottom: 10px;
+.hero-container {
+    width: 100%;
+}
+
+/* Responsive typography using clamp() */
+.hero {
+    width: 100%;
+}
+
+.next-session {
+    letter-spacing: -1px;
+    font-size: clamp(12px, 2vw, 20px);
+    text-align: center;
+}
+
+.video-container {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.wistia-wrapper {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    display: block;
+}
+
+
+/* Keep this in styles.css for Wistia pre-load fallback */
+wistia-player[media-id='zpd98eqx32']:not(:defined) {
+    background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/zpd98eqx32/swatch');
+    display: block;
+    filter: blur(5px);
+    padding-top: 56.25%;
 }
 
 h2 {
-    font-size: 30px;
+    font-size: clamp(18px, 4vw, 34px);
+    font-family: "Switzer-semibold";
+    letter-spacing: -1.5px;
+    line-height: 1;
 }
 
-h3 {
-    font-size: 24px;
+
+
+.live {
+    vertical-align: middle;
+    background-color: #E9E9ED;
+    border-radius: 5px;
+    padding: 2px;
+    font-size: 12px;
 }
 
-main {
-    max-width: 712px;
+.circle {
+    vertical-align: middle;
+    font-size: 12px;
+    animation: blinker 1s step-start infinite;
+}
+
+h3,
+p,
+li,
+.callout {
+    font-size: clamp(12px, 2vw, 18px);
+}
+
+.hosted {
+    line-height: 1;
+}
+
+ul {
     margin: 0 auto;
-    padding: 0 20px;
-    
 }
 
-.logo-container {
-    width: 40%;
-    margin: 0 auto;
-}
-
-img {
-    width: 100%;
-    height: auto;
-    margin-bottom: 40px;
-    border-radius: 4px;
-}
-
-.content-box {
-    border: 1px solid #37352f3a;
-    border-radius: 4px;
-    padding: 12px 20px 12px 20px;
-
-}
-
-.content-box p:last-of-type {
-    margin-bottom: 0;
-}
-
-.spacer {
-    height: 50px;
-}
-
-p {
+.value-stack {
+    font-size: clamp(18px, 4vw, 34px);
+    text-align: center;
     margin-bottom: 10px;
 }
 
-.highlight {
-    background-color: #fbf3db;
+/* Resize logos more fluidly */
+.sb-logo {
+    width: clamp(50px, 10vw, 90px);
 }
 
-a {
-    color: #337EA9;
-    font-family: "NeueMontreal-bold", sans-serif;
+.marmo-logo {
+    width: clamp(100px, 14vw, 150px);
 }
 
-footer {
-    color: #73726E;
+.live-checkout {
+    font-family: 'Switzer-Semibold', sans-serif;
+    font-size: clamp(14px, 3vw, 24px);
+    padding: 10px 12px;
+    cursor: pointer;
+    height: auto;
+    margin: 0 auto;
+    line-height: 1;
+    border: none;
+    border-radius: 5px;
+    background-color: #E9E9ED;
+    color: #5f5f60;
+    text-align: center;
+    text-decoration: none;
+    letter-spacing: -.5px;
 }
+
+.replay-only {
+    text-align: center;
+    color: #5f5f60;
+    letter-spacing: -.7px;
+    font-size: clamp(8px, 2vw, 14px);
+    margin-top: 10px;
+
+}
+
+/* Adjust spacer size for better fit */
+.spacer {
+    height: 20px;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+
+@media only screen and (min-width: 600px) {}
+
+@media only screen and (min-width: 1000px) {}
+
+@media only screen and (min-width: 1200px) {}
